@@ -1,4 +1,11 @@
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 100px;
+  margin-left: 100px;
+}
 .btn {
+  display: block;
   font-size: 1.3rem;
   padding: 5px 10px;
   background-color: #faebd7;
@@ -30,12 +37,14 @@ ul .btn:hover {
   font-size: 1.5rem;
   background-color: #ebac5b;
   color: #ffffffde;
+  display: block;
 }
 .btn-refresh:hover {
   background-color: #fc9816;
   color: #fff;
 }
 .joke-display {
+  display: block;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -60,6 +69,7 @@ h1 {
   background-color: antiquewhite;
   border-radius: 10px;
   padding: 10px 10px;
+  display: block;
 }
 h1 {
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.4);

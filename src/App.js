@@ -4,10 +4,10 @@ import './App.css'
 function App() {
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState('')
+  const [categoryAfterRefresh, setCategoryAfterRefresh] = useState('')
   const [jokeData, setJokeData] = useState({})
   const [isPendingCategories, setIsPendingCategories] = useState(false)
   const [isPendingJokes, setIsPendingJokes] = useState(false)
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(-1)
   const [isHiddenButton, setIsHiddenButton] = useState('refresh-button-hidden')
 
   const fetchCategories = () => {
@@ -21,7 +21,7 @@ function App() {
   }
 
   const fetchJokes = (category, index) => {
-    setActiveCategoryIndex(index)
+    setCategoryAfterRefresh(category)
     setCategory(category)
     setIsPendingJokes(true)
     fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
@@ -40,16 +40,18 @@ function App() {
     <div className='container'>
       <h1>Chuck Norris Joke Generator</h1>
       <div className='categories'>
-        <button onClick={fetchCategories} className='btn btn-categories'>
-          {categories.length !== 0 ? 'Categories' : 'Click for Categories'}
-        </button>
+        <div className='btn-container'>
+          <button onClick={fetchCategories} className='btn btn-categories'>
+            {categories.length !== 0 ? 'Categories' : 'Click for Categories'}
+          </button>
+        </div>
         {isPendingCategories && <p>Getting Joke Categories...</p>}
         <ul>
           {categories.map((category, index) => (
             <button
               onClick={() => fetchJokes(category, index)}
               className={
-                index === activeCategoryIndex
+                category === categoryAfterRefresh
                   ? `btn btn-active-category`
                   : `btn`
               }
@@ -67,12 +69,14 @@ function App() {
           jokeData.value && (
             <>
               <p>{`"${jokeData.value}"`}</p>
-              <button
-                className={`btn btn-refresh ${isHiddenButton}`}
-                onClick={() => fetchJokes(category)}
-              >
-                Refresh Joke
-              </button>
+              <div className='btn-container'>
+                <button
+                  className={`btn btn-refresh ${isHiddenButton}`}
+                  onClick={() => fetchJokes(category)}
+                >
+                  Refresh Joke
+                </button>
+              </div>
             </>
           )
         )}
