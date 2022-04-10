@@ -1,4 +1,4 @@
-Please visit:- https://extraordinary-melba-533be2.netlify.app
+Please visit to open the app: https://extraordinary-melba-533be2.netlify.app
 
 # Getting Started with Create React App
 
