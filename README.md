@@ -1,7 +1,7 @@
 Please visit to open the app: https://extraordinary-melba-533be2.netlify.app
 
 # A Chuck Norris joke generator using React
-#Build using https://api.chucknorris.io/
+# Build using https://api.chucknorris.io/
 
 
 # Getting Started with Create React App
